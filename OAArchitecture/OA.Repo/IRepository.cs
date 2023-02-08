@@ -13,7 +13,7 @@ namespace OA.Repo
         T Get(long id);
         void Insert(T entity);
         void Update(T entity);
-        void Delete(long id);
+        void Delete(T entity);
         void Remove(T entity);
         void SaveChanges();
     }
