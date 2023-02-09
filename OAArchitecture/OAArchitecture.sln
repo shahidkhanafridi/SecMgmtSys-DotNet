@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OA.Api", "OA.Api\OA.Api.csproj", "{81CA2481-C666-497E-8C7D-D58E28ADE5DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OA.Api", "OA.Api\OA.Api.csproj", "{81CA2481-C666-497E-8C7D-D58E28ADE5DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OA.Data", "OA.Data\OA.Data.csproj", "{E6FA258B-C328-4BFD-A515-98EC9EBE43FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OA.Data", "OA.Data\OA.Data.csproj", "{E6FA258B-C328-4BFD-A515-98EC9EBE43FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OA.Repo", "OA.Repo\OA.Repo.csproj", "{58953B43-9C60-48EA-9FFC-5E4A4B8A8088}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OA.Repo", "OA.Repo\OA.Repo.csproj", "{58953B43-9C60-48EA-9FFC-5E4A4B8A8088}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OA.Service", "OA.Service\OA.Service.csproj", "{9E078CF6-E60A-4810-BBA4-C106340766AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OA.Service", "OA.Service\OA.Service.csproj", "{9E078CF6-E60A-4810-BBA4-C106340766AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OA.Models", "OA.Models\OA.Models.csproj", "{98701FE3-E62B-46FD-B54B-15BF2D94B197}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{9E078CF6-E60A-4810-BBA4-C106340766AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E078CF6-E60A-4810-BBA4-C106340766AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E078CF6-E60A-4810-BBA4-C106340766AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98701FE3-E62B-46FD-B54B-15BF2D94B197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98701FE3-E62B-46FD-B54B-15BF2D94B197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98701FE3-E62B-46FD-B54B-15BF2D94B197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98701FE3-E62B-46FD-B54B-15BF2D94B197}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

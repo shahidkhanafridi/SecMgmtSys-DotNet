@@ -3,9 +3,9 @@ using OA.Data;
 
 namespace OA.Repo
 {
-    public class ApplicationContext:DbContext
+    public class ApplicationContext : DbContext
     {
-        public ApplicationContext(DbContextOptions<ApplicationContext> options):base(options)
+        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
         }
 

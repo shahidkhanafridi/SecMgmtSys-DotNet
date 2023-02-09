@@ -13,5 +13,4 @@ namespace OA.Data
         public string Address { get; set; }
         public virtual User User { get; set; }
     }
-}  
 }
