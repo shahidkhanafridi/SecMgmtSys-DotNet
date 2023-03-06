@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="EntitiesMap\" />
+    <Compile Remove="EntitiesMap\**" />
+    <Compile Remove="Entities\**" />
+    <EmbeddedResource Remove="EntitiesMap\**" />
+    <EmbeddedResource Remove="Entities\**" />
+    <None Remove="EntitiesMap\**" />
+    <None Remove="Entities\**" />
   </ItemGroup>
 
   <ItemGroup>
