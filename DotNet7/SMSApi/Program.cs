@@ -1,3 +1,5 @@
+global using SMSApi.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace SMSApi
 {
@@ -12,6 +14,10 @@ namespace SMSApi
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+            
+            var connectionString = builder.Configuration.GetConnectionString("AppDb");
+            builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(connectionString));
+
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();

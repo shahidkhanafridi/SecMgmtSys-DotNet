@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SMSApi.Data
+namespace SMSApi.Data.Entities
 {
-    public abstract class BaseEntity
+    public abstract class Trackable
     {
         public int Id { get; set; }
         public DateTime? CreatedOn { get; set; }
