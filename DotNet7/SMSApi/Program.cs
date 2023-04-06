@@ -1,4 +1,5 @@
 global using SMSApi.Data;
+global using SMSApi.Data.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -38,7 +39,7 @@ namespace SMSApi
             var connectionString = builder.Configuration.GetConnectionString("AppDb");
             //builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(connectionString, sqlServerOptions => sqlServerOptions.MigrationsAssembly("")));
             builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(connectionString));
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 
             builder.Services.AddSwaggerGen();
 
