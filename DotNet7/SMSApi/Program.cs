@@ -17,6 +17,7 @@ namespace SMSApi
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
+                    string secKey = builder.Configuration["Jwt:Key"].ToString();
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
@@ -24,7 +25,7 @@ namespace SMSApi
                         ValidateLifetime = true,
                         ValidIssuer = builder.Configuration["Jwt:Issuer"],
                         ValidAudience = builder.Configuration["Jwt:Issuer"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secKey))
                     };
                 });
 
