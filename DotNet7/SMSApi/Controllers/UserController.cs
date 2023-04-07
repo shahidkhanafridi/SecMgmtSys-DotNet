@@ -15,7 +15,7 @@ namespace SMSApi.Controllers
         {
             this.userManager = userManager;
         }
-
+        [HttpGet]
         public IActionResult Create(UserDTO model)
         {
             return Ok();
