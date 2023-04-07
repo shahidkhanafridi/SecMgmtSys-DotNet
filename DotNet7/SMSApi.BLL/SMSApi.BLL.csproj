@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SMSApi.Data\SMSApi.Data.csproj" />
+    <ProjectReference Include="..\SMSApi.Models\SMSApi.Models.csproj" />
   </ItemGroup>
 
 </Project>
