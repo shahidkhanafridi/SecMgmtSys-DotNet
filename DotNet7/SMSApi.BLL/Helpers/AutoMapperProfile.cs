@@ -11,7 +11,8 @@ namespace SMSApi.BLL.Helpers
     {
         public AutoMapperProfile()
         {
-            CreateMap<User, SMSApi.Models.UserDTO>().ReverseMap();
+            CreateMap<SMSApi.Models.UserDTO, User>()
+                .ForMember(m => m.UserName, opt => opt.MapFrom(f => f.Email)).ReverseMap();
         }
     }
 }

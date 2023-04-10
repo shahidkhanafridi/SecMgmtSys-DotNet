@@ -3,6 +3,7 @@ global using SMSApi.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SMSApi.Data.Entities;
 
 namespace SMSApi.Controllers
 {
@@ -10,15 +11,30 @@ namespace SMSApi.Controllers
     [ApiController]
     public class UserController : BaseController
     {
-        private readonly UserManager<IdentityUser> userManager;
-        public UserController(IMapper mapper, UserManager<IdentityUser> userManager) : base(mapper)
+        private readonly UserManager<User> userManager;
+        public UserController(IMapper mapper, UserManager<User> userManager) : base(mapper)
         {
             this.userManager = userManager;
         }
 
         [HttpGet]
-        public IActionResult Create(UserDTO model)
+        public async Task<IActionResult> CreateAsync(UserDTO model)
         {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    User user = this.mapper.Map<User>(model);
+                    await userManager.CreateAsync(user, password: model.Password);
+
+                    return new CreatedAtActionResult(nameof(CreateAsync), "", new { id = 0 }, user);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
             return Ok();
         }
     }
