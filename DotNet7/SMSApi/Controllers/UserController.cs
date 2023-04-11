@@ -25,9 +25,16 @@ namespace SMSApi.Controllers
                 if (ModelState.IsValid)
                 {
                     User user = this.mapper.Map<User>(model);
-                    await userManager.CreateAsync(user, password: model.Password);
-
-                    return new CreatedAtActionResult(nameof(CreateAsync), "", new { id = 0 }, user);
+                    IdentityResult identityResult = await userManager.CreateAsync(user, password: model.Password);
+                    if(identityResult.Succeeded)
+                    {
+                        return new CreatedAtActionResult(nameof(CreateAsync), "", new { id = 0 }, user);
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                    
                 }
             }
             catch (Exception ex)
