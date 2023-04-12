@@ -12,25 +12,14 @@ namespace SMSApi.Data.Interfaces
     }
     public class ApiResponse : IApiResponse
     {
-        public bool IsError { get; set; }
+        public bool IsSuccess { get; set; }
         public string? Message { get; set; }
         public object? Data { get; set; }
-        public ApiResponse(object data)
+        public ApiResponse()
         {
-            this.IsError= false;
-            this.Data = data;
-        }
-        public ApiResponse(string? message, object? data)
-        {
-            this.IsError= false;
-            this.Message = message;
-            this.Data = data;
-        }
-        public ApiResponse(bool isError, string? message, object? data)
-        {
-            this.IsError = isError;
-            this.Message = message;
-            this.Data = data;
+            this.IsSuccess= true;
+            this.Message = string.Empty;
+            this.Data = null;
         }
     }
 }

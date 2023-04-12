@@ -1,6 +1,5 @@
 ﻿global using Microsoft.AspNetCore.Identity;
 global using SMSApi.Models;
-using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SMSApi.Data.Entities;
@@ -17,7 +16,7 @@ namespace SMSApi.Controllers
             this.userManager = userManager;
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> CreateAsync(UserDTO model)
         {
             try
@@ -26,7 +25,7 @@ namespace SMSApi.Controllers
                 {
                     User user = this.mapper.Map<User>(model);
                     IdentityResult identityResult = await userManager.CreateAsync(user, password: model.Password);
-                    if(identityResult.Succeeded)
+                    if (identityResult.Succeeded)
                     {
                         return new CreatedAtActionResult(nameof(CreateAsync), "", new { id = 0 }, user);
                     }
@@ -34,7 +33,7 @@ namespace SMSApi.Controllers
                     {
                         return null;
                     }
-                    
+
                 }
             }
             catch (Exception ex)
@@ -43,6 +42,13 @@ namespace SMSApi.Controllers
                 throw;
             }
             return Ok();
+        }
+
+        [HttpGet]
+        public ActionResult GetUser()
+        {
+            throw new Exception("Duplicate entries found in database");
+            return null;
         }
     }
 }
