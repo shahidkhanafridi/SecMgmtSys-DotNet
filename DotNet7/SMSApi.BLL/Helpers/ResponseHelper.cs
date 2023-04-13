@@ -60,5 +60,10 @@ namespace SMSApi.BLL.Helpers
             ApiResponse ar = new() { IsSuccess = false, Data = data, Message = message };
             return ar;
         }
+        public static ApiResponse Error(bool isSuccess,object data, string message)
+        {
+            ApiResponse ar = new() { IsSuccess = isSuccess, Data = data, Message = message };
+            return ar;
+        }
     }
 }
