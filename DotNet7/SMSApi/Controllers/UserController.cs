@@ -1,5 +1,6 @@
 ﻿global using Microsoft.AspNetCore.Identity;
 global using SMSApi.Models;
+global using SMSApi.BLL.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SMSApi.Data.Entities;
@@ -19,29 +20,18 @@ namespace SMSApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(UserDTO model)
         {
-            try
+            
+            User user = this.mapper.Map<User>(model);
+            IdentityResult identityResult = await userManager.CreateAsync(user, password: model.Password);
+            if(identityResult.Succeeded)
             {
-                if (ModelState.IsValid)
-                {
-                    User user = this.mapper.Map<User>(model);
-                    IdentityResult identityResult = await userManager.CreateAsync(user, password: model.Password);
-                    if (identityResult.Succeeded)
-                    {
-                        return new CreatedAtActionResult(nameof(CreateAsync), "", new { id = 0 }, user);
-                    }
-                    else
-                    {
-                        return null;
-                    }
-
-                }
+                this.apiResponse = ResponseHelper.Success(user, "User successfully created");
             }
-            catch (Exception ex)
+            else
             {
-
-                throw;
+                this.apiResponse = ResponseHelper.SuccessWithError(user, "User does not created");
             }
-            return Ok();
+            return Ok(this.apiResponse);
         }
 
         [HttpGet]

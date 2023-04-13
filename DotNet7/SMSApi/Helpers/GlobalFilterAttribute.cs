@@ -7,11 +7,11 @@ namespace SMSApi.Helpers
     {
         public void OnException(ExceptionContext context)
         {
-            var ctrlName = context.RouteData.Values["controller"];
-            var actnName = context.RouteData.Values["action"];
-            var routePath = Path.Combine(ctrlName.ToString(), actnName.ToString());
-            
-            context.Result = new BadRequestObjectResult(new ApiResponse { IsSuccess = false, Message = context.Exception.Message });
+            string? ctrlName = (string)context.RouteData.Values["controller"];
+            string? actnName = (string)context.RouteData.Values["action"];
+            string routePath = Path.Combine(ctrlName.ToString(), actnName.ToString());
+
+            context.Result = new BadRequestObjectResult(new ApiResponse { IsSuccess = false, Message = context.Exception.Message, ErrorDetail = context.Exception });
         }
     }
 }
