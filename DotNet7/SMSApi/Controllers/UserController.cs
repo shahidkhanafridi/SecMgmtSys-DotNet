@@ -20,10 +20,17 @@ namespace SMSApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(UserDTO model)
         {
-            
-            User user = this.mapper.Map<User>(model);
-            IdentityResult identityResult = await userManager.CreateAsync(user, password: model.Password);
-            if(identityResult.Succeeded)
+
+            User user = new()
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName
+            };
+
+            IdentityResult identityResult = await userManager.CreateAsync(user, model.Password);
+            if (identityResult.Succeeded)
             {
                 this.apiResponse = ResponseHelper.Success(user, "User successfully created");
             }
@@ -38,7 +45,6 @@ namespace SMSApi.Controllers
         public ActionResult GetUser()
         {
             throw new Exception("Duplicate entries found in database");
-            return null;
         }
     }
 }
