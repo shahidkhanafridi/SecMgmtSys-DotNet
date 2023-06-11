@@ -44,7 +44,7 @@ namespace SMSApi
             var connectionString = builder.Configuration.GetConnectionString("AppDb");
             //builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(connectionString, sqlServerOptions => sqlServerOptions.MigrationsAssembly("")));
             builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(connectionString));
-            builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
             builder.Services.AddSwaggerGen();
             builder.Services.AddMvc(opt => opt.Filters.Add(new GlobalFilterAttribute()));
