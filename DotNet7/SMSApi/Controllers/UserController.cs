@@ -4,6 +4,7 @@ global using SMSApi.BLL.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SMSApi.Data.Entities;
+using AutoMapper;
 
 namespace SMSApi.Controllers
 {
