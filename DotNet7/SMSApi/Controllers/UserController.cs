@@ -1,6 +1,6 @@
 ﻿global using Microsoft.AspNetCore.Identity;
 global using SMSApi.Models;
-using AutoMapper;
+global using SMSApi.BLL.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SMSApi.Data.Entities;
@@ -17,25 +17,34 @@ namespace SMSApi.Controllers
             this.userManager = userManager;
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> CreateAsync(UserDTO model)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    User user = this.mapper.Map<User>(model);
-                    await userManager.CreateAsync(user, password: model.Password);
 
-                    return new CreatedAtActionResult(nameof(CreateAsync), "", new { id = 0 }, user);
-                }
-            }
-            catch (Exception ex)
+            User user = new()
             {
+                UserName = model.Email,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName
+            };
 
-                throw;
+            IdentityResult identityResult = await userManager.CreateAsync(user, model.Password);
+            if (identityResult.Succeeded)
+            {
+                this.apiResponse = ResponseHelper.Success(user, "User successfully created");
             }
-            return Ok();
+            else
+            {
+                this.apiResponse = ResponseHelper.SuccessWithError(user, "User does not created");
+            }
+            return Ok(this.apiResponse);
+        }
+
+        [HttpGet]
+        public ActionResult GetUser()
+        {
+            throw new Exception("Duplicate entries found in database");
         }
     }
 }

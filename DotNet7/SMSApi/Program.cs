@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using SMSApi.BLL.Helpers;
+using SMSApi.Helpers;
 using System.Text;
 
 namespace SMSApi
@@ -13,6 +15,9 @@ namespace SMSApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            //Adding Automapper
+            builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
             // adding JWT
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -42,6 +47,8 @@ namespace SMSApi
             builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 
             builder.Services.AddSwaggerGen();
+            builder.Services.AddMvc(opt => opt.Filters.Add(new GlobalFilterAttribute()));
+            //builder.Services.AddScoped<GlobalFilterAttribute>();
 
             var app = builder.Build();
 
