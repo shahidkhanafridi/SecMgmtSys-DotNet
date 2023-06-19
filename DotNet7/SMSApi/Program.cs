@@ -1,12 +1,8 @@
 global using SMSApi.Data;
 global using SMSApi.Data.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using SMSApi.BLL;
-using SMSApi.BLL.Helpers;
-using SMSApi.Data.Repositories;
 using SMSApi.Helpers;
 using System.Text;
 
@@ -48,9 +44,7 @@ namespace SMSApi
             builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(connectionString));
             builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
-            builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            builder.Services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
-            builder.Services.AddScoped<RepositoryFactory>();
+            //builder.Services.AddScoped(typeof(IBaseService), typeof(BaseService));
 
             builder.Services.AddSwaggerGen();
             builder.Services.AddMvc(opt => opt.Filters.Add(new GlobalFilterAttribute()));

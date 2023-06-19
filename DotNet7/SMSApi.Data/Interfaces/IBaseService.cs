@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace SMSApi.Data.Interfaces
 {
-    public interface IBaseService<T> where T : class
+    public interface IBaseService
     {
-        Task<T> GetByIdAsync(string id);
-        Task<IEnumerable<T>> GetAllAsync();
-        Task CreateAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
+        
     }
 }
