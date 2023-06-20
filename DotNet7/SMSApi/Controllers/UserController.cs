@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SMSApi.Data.Entities;
 using AutoMapper;
+using SMSApi.BLL;
 
 namespace SMSApi.Controllers
 {
@@ -12,10 +13,12 @@ namespace SMSApi.Controllers
     [ApiController]
     public class UserController : BaseController
     {
+        private readonly IUserService _userService;
         private readonly UserManager<User> userManager;
-        public UserController(IMapper mapper, UserManager<User> userManager) : base(mapper)
+        public UserController(IMapper mapper, UserManager<User> userManager, IUserService userService) : base(mapper)
         {
             this.userManager = userManager;
+            _userService = userService;
         }
 
         [HttpPost]

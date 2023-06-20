@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SMSApi.Data.Interfaces
+namespace SMSApi.Data.Repositories
 {
-    public interface IBaseService
+    public interface IBaseRepository
     {
-        
+
+    }
+    internal class BaseRepository
+    {
     }
 }
