@@ -1,4 +1,5 @@
-﻿using SMSApi.Data.Entities;
+﻿global using SMSApi.Models;
+using SMSApi.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace SMSApi.BLL.Helpers
     {
         public AutoMapperProfile()
         {
-            CreateMap<SMSApi.Models.UserDTO, User>()
+            CreateMap<SMSApi.Models.UserDto, User>()
                 .ForMember(m => m.UserName, opt => opt.MapFrom(f => f.Email)).ReverseMap();
         }
     }

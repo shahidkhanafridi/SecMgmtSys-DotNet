@@ -8,13 +8,16 @@ using System.Threading.Tasks;
 
 namespace SMSApi.Models
 {
-    public class UserDTO
+    public class UserDto
     {
         public string? Id { get; set; }
         [Required]
         [MinLength(3, ErrorMessage = "Please enter vali first name")]
         public string FirstName { get; set; } = string.Empty;
         public string? LastName { get; set; }
+
+        public string? Username { get; set; }
+
         [Required]
         [EmailAddress(ErrorMessage = "Email address is invalid")]
         public string? Email { get; set; }

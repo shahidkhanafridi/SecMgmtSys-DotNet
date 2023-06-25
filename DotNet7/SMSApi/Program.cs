@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SMSApi.BLL;
-using SMSApi.Data.Repositories;
 using SMSApi.Helpers;
 using System.Text;
 
@@ -48,7 +47,6 @@ namespace SMSApi
 
             //builder.Services.AddScoped(typeof(IBaseService), typeof(BaseService));
             //builder.Services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
-            builder.Services.AddScoped<IUserRepository, UserRepository>();
 
             builder.Services.AddScoped<IUserService, UserService>();
 

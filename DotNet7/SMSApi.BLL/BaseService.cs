@@ -1,6 +1,4 @@
-﻿global using SMSApi.Data.Repositories;
-
-namespace SMSApi.BLL
+﻿namespace SMSApi.BLL
 {
     public interface IBaseService
     {
@@ -8,11 +6,6 @@ namespace SMSApi.BLL
     }
     public class BaseService
     {
-        private readonly IBaseRepository _repository;
-
-        public BaseService(IBaseRepository repository)
-        {
-            _repository = repository;
-        }
+        
     }
 }

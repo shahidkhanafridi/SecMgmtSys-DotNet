@@ -5,50 +5,96 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SMSApi.Data.Entities;
 using AutoMapper;
-using SMSApi.BLL;
 
 namespace SMSApi.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class UserController : BaseController
+    [Route("api/users")]
+    public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
-        private readonly UserManager<User> userManager;
-        public UserController(IMapper mapper, UserManager<User> userManager, IUserService userService) : base(mapper)
+
+        public UserController(IUserService userService)
         {
-            this.userManager = userManager;
             _userService = userService;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateAsync(UserDTO model)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUserById(string id)
         {
-
-            User user = new()
+            var user = await _userService.GetUserByIdAsync(id);
+            if (user == null)
             {
-                UserName = model.Email,
-                Email = model.Email,
-                FirstName = model.FirstName,
-                LastName = model.LastName
-            };
-
-            IdentityResult identityResult = await userManager.CreateAsync(user, model.Password);
-            if (identityResult.Succeeded)
-            {
-                this.apiResponse = ResponseHelper.Success(user, "User successfully created");
+                return NotFound();
             }
-            else
+
+            return Ok(user);
+        }
+
+        [HttpGet("username/{username}")]
+        public async Task<IActionResult> GetUserByUsername(string username)
+        {
+            var user = await _userService.GetUserByUsernameAsync(username);
+            if (user == null)
             {
-                this.apiResponse = ResponseHelper.SuccessWithError(user, "User does not created");
+                return NotFound();
             }
-            return Ok(this.apiResponse);
+
+            return Ok(user);
         }
 
         [HttpGet]
-        public ActionResult GetUser()
+        public async Task<IActionResult> GetAllUsers()
         {
-            throw new Exception("Duplicate entries found in database");
+            var users = await _userService.GetAllUsersAsync();
+            return Ok(users);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(UserDto userDto)
+        {
+            try
+            {
+                var user = new User { UserName = userDto.Username, Email = userDto.Email };
+                await _userService.CreateUserAsync(user, userDto.Password);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(string id, UserDto userDto)
+        {
+            var user = await _userService.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Update the properties of the user based on the provided userDto object
+            user.UserName = userDto.Username;
+            user.Email = userDto.Email;
+            // Update other properties as needed
+
+            await _userService.UpdateUserAsync(user);
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await _userService.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            await _userService.DeleteUserAsync(user);
+            return Ok();
         }
     }
+
 }

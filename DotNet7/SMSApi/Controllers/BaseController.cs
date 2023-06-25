@@ -1,5 +1,7 @@
 ﻿global using SMSApi.Data.Interfaces;
 global using AutoMapper;
+global using SMSApi.BLL;
+global using SMSApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
