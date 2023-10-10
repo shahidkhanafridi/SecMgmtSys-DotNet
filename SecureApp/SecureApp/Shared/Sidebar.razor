@@ -1,0 +1,64 @@
+﻿<!-- Sidebar -->
+<nav class="col-md-3 col-lg-2 d-md-block bg-lightgray sidebar min-vh-100">
+    <div class="position-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">Dashboard</NavLink>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="" data-bs-toggle="collapse" data-bs-target="#submenuUserMgmt">User Management</a>
+                <!-- Create a container for the submenu -->
+                <div class="submenu-container">
+                    <ul id="submenuUserMgmt" class="nav flex-column ml-3 collapse" data-bs-parent="#submenuUserMgmt">
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="Users">Users</NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="Departments">Departments</NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="Permissions">Permissions</NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="Features">Features</NavLink>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#submenuUserMgmt">User Management</a>
+                <!-- Create a container for the submenu -->
+                <div class="submenu-container">
+                    <ul id="submenuUserMgmt" class="nav flex-column ml-3 collapse" data-bs-parent="#submenuUserMgmt">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#subitem2">Create User</a>
+                            <ul id="subitem2" class="nav flex-column ml-3 collapse" data-bs-parent="#submenuUserMgmt">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Sub-subitem 1</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Sub-subitem 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#subitem3">Subitem 3</a>
+                            <ul id="subitem3" class="nav flex-column ml-3 collapse" data-bs-parent="#submenuUserMgmt">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Sub-subitem 1</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Sub-subitem 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+@code {
+
+}

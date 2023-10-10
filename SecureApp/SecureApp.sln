@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecureApp", "SecureApp\SecureApp.csproj", "{41AF4A37-6003-45F5-A75E-71093E5F1634}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41AF4A37-6003-45F5-A75E-71093E5F1634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41AF4A37-6003-45F5-A75E-71093E5F1634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41AF4A37-6003-45F5-A75E-71093E5F1634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41AF4A37-6003-45F5-A75E-71093E5F1634}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA45B2A5-5185-4809-879F-374D55018921}
+	EndGlobalSection
+EndGlobal
